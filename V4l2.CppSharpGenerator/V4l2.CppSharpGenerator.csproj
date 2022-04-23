@@ -11,4 +11,11 @@
     <PackageReference Include="CppSharp" Version="1.0.1" />
   </ItemGroup>
 
+  <PropertyGroup Label="Pre-build task">
+    <PreBuildEvent Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' ">
+      cp /usr/include/linux/videodev2.h $(MSBuildProjectDirectory)/../include/
+    </PreBuildEvent>
+  </PropertyGroup>
+
+
 </Project>
